@@ -15,7 +15,7 @@ class CA{
   }
   
   //check for one cell's moore neighborhood (the 8 adjascent cells)
-  //returns the  
+  //returns the number of living cells in the neighborhood
   int neiMoore1(int _I, int _J){
     int nc = 0;
     for(int i=-1; i<=1; i++){
