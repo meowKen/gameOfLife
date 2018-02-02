@@ -18,6 +18,16 @@ void setup(){
   edit = false;
 }
 
+
+/**********************************/
+        //draw() function :
+// possible states of function
+//  _1_ Menu
+//  _2_ Edit
+//    _2.1_ Edit && toClean
+//    _2.1_ Edit && step
+//  _3_ Running
+/**********************************/
 void draw(){
   if(cd == delay){
     if(menu){
@@ -54,6 +64,12 @@ void draw(){
  
 }
 
+/**************************/
+// mouseClicked() function : execute once when the mouse is clicked
+// allow the program to know IF : 
+//  should or shouldn't end demo mode and go to edit mode 
+//  OR add a living cell under the mouse cursor 
+/**************************/
 void mouseClicked(){
   if(startBtnOver){
     menu = false;
@@ -67,9 +83,12 @@ void mouseClicked(){
   }
 }
 
+/*************************/
+// the keyboard controls of the application
+/*************************/
 void keyPressed(){
   toClean = false;
-  if(key == BACKSPACE || key == ENTER){
+  if(key == BACKSPACE || key == ENTER){   //variable named 'key' stores the LAST input code
     if(edit){
       edit = false;
       running = true;
