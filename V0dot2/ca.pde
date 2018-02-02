@@ -14,6 +14,8 @@ class CA{
     
   }
   
+  //check for one cell's moore neighborhood (the 8 adjascent cells)
+  //returns the  
   int neiMoore1(int _I, int _J){
     int nc = 0;
     for(int i=-1; i<=1; i++){
@@ -30,6 +32,7 @@ class CA{
     return nc;
   }
   
+  // fill self grid with new data
   void copyCA(Cell[][] _C){
     for(int i=0; i<wid/gridUnit; i++){
       for(int j=0; j<hei/gridUnit; j++){
@@ -39,6 +42,9 @@ class CA{
     }
   }
   
+  //make a new generation according to conway's game of life rules
+  //IF dead cell w/ 3 living neighboors live
+  //ELSE IF living cell w/ N neighboors live (1<N<4)   
   void generate(){
     Cell[][] next = new Cell[wid/gridUnit][hei/gridUnit];
     for(int i=0; i<wid/gridUnit; i++){
@@ -72,6 +78,7 @@ class CA{
     text("generation : "+generation, gridUnit+(gridUnit/6),gridUnit*2);
   }
   
+  //set the color atribute of the each cell
   void setCellsColor(color a, color b){
     for(int i=0; i<wid/gridUnit; i++){
       for(int j=0; j<hei/gridUnit; j++){
@@ -84,13 +91,14 @@ class CA{
     }
   }
   
+  //create a living cell
   void setCellLive(float _X, float _Y){
     GOL[floor(_X/gridUnit)][floor(_Y/gridUnit)].x = 1;
     GOL[floor(_X/gridUnit)][floor(_Y/gridUnit)].c = color(47);
   }
   
-  //void setCellDead()
-  
+ 
+  //reset the grid
   void reset(boolean mode){  // mode true = random reset, mode false = all dead
     if(mode){
       for(int i=0; i<wid/gridUnit; i++){
